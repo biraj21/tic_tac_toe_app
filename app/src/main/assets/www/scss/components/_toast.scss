@@ -1,0 +1,45 @@
+my-toast {
+    display: block;
+    width: 300px;
+    padding: 16px;
+    border-radius: 20px;
+    background-color: rgba(221, 221, 221, 0.6);
+    font-size: 16px;
+    color: #000;
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    z-index: 100;
+    transform: translateX(-50%);
+    display: none;
+    opacity: 0;
+
+    &.fade-in {
+        animation: fade-in 400ms ease-in forwards;
+    }
+
+    &.fade-out {
+        animation: fade-out 400ms ease-in forwards;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+}

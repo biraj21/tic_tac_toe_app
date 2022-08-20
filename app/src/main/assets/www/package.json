@@ -1,0 +1,13 @@
+{
+    "name": "tic-tac-toe",
+    "scripts": {
+        "scss": "npx sass --no-source-map --style compressed scss:css",
+        "scss-watch": "npx sass --no-source-map --style compressed --watch scss:css"
+    },
+    "devDependencies": {
+        "sass": "^1.49.10"
+    },
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+}
