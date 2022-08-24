@@ -1,0 +1,12 @@
+{
+    "name": "tic_tac_toe_app",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "build": "sh scripts/build.sh",
+        "clean": "rm -fr www/* platforms/android/app/src/main/assets/www/*"
+    },
+    "devDependencies": {
+        "sass": "^1.54.5"
+    }
+}

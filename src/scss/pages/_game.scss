@@ -1,0 +1,170 @@
+#game-mode {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#names {
+    display: flex;
+    width: 280px;
+    padding: 0 1rem 0.2rem;
+
+    .name {
+        width: 50%;
+        font-size: 1rem;
+    }
+
+    #p2-name {
+        text-align: right;
+    }
+}
+
+#scoreboard {
+    display: flex;
+    width: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+
+    .score-info {
+        display: flex;
+        width: 50%;
+        height: 100%;
+        padding: 0.8rem 0;
+        background: #dddcdc;
+        color: #000;
+        font-size: 1.5rem;
+        justify-content: space-around;
+        transition: background-color 250ms;
+
+        &.turn {
+            background: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+            color: #fff;
+            z-index: 100;
+
+            .o {
+                border: 7px solid #fff;
+                color: #fff;
+            }
+
+            .x::before,
+            .x::after {
+                background: #fff;
+            }
+        }
+    }
+}
+
+#board {
+    width: 270px;
+    height: 270px;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    position: relative;
+
+    &.game-draw::before {
+        content: "It's a draw!";
+        width: 100%;
+        height: 100%;
+        background-color: var(--game-draw-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        transition: background-color 400ms;
+    }
+
+    tr {
+        &:nth-child(1) .cell {
+            border-top: none;
+        }
+
+        .cell:nth-child(3) {
+            border-right: none;
+        }
+
+        &:nth-child(3) .cell {
+            border-bottom: none;
+        }
+
+        .cell:nth-child(1) {
+            border-left: none;
+        }
+    }
+
+    .cell {
+        width: 90px;
+        height: 90px;
+        border: 3px solid var(--primary-color);
+        cursor: pointer;
+
+        &.win {
+            --color-o: #009639;
+            --color-x: #009639;
+            animation-name: blink;
+            animation-duration: 250ms;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 3;
+            animation-delay: 400ms;
+        }
+
+        .o,
+        .x {
+            width: 70%;
+            height: 70%;
+            animation-name: appear;
+            animation-duration: 150ms;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+        }
+
+        .o {
+            border: 13px solid var(--color-o);
+        }
+
+        .x::before,
+        .x::after {
+            background: var(--color-x);
+            width: 13px;
+            border-radius: 2.7px;
+        }
+    }
+
+    @keyframes appear {
+        0% {
+            transform: scale(0);
+        }
+
+        80% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+#restart-btn {
+    width: 150px;
+    font-size: 1.2rem;
+    margin: 1.5rem auto;
+}
